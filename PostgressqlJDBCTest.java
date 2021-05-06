@@ -9,12 +9,12 @@ class PostgresqlJDBCTest {
             System.exit(0); 
             }
         // CHANGE THESE ENTRIES TO SUIT YOUR INSTALLATION 
-            String serverIp = "localhost"; 
-            String databasename = "xxxx";
+            String serverIp = "localhost:5435"; 
+            String databasename = "badale2";
             // you need to change this (mh) 
-            String username = "xxxx";
+            String username = "badale2";
             // you need to change this (mh) 
-            String password = "xxxx";
+            String password = "chris";
             // you need to change this (mh) 
             String tablename = "customers"; // Make sure this table exists
                                             // in your database
