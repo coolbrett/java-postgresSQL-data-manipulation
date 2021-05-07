@@ -41,7 +41,11 @@ class PostgresqlJDBCTestExercise311 {
             rset = stmt.executeQuery(
                 "SELECT DISTINCT(name) FROM student NATURAL JOIN" + 
                     " takes NATURAL JOIN course WHERE dept_name = 'Comp. Sci.'"); 
-            System.out.println("\n3.11a\nName");
+            System.out.println("3.11a");
+            ResultSetMetaData rsetMeta = rset.getMetaData();
+            String tName = rsetMeta.getTableName(1);
+            System.out.println("Table name is: " + tName);
+            System.out.println("\nName");
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\n"); 
             } 
