@@ -1,5 +1,5 @@
 import java.sql.*;
-class PostgresqlJDBCTest { 
+class PostgresqlJDBCTestExercise311 { 
     public static void main( String args[] ) { 
             try { 
             Class.forName(
