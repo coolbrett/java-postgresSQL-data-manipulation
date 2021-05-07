@@ -16,7 +16,7 @@ class PostgresqlJDBCTest {
             // you need to change this (mh) 
             String password = "chris";
             // you need to change this (mh) 
-            String tablename = "customers"; // Make sure this table exists
+            String tablename = "student"; // Make sure this table exists
                                             // in your database
             Connection conn = null; 
             Statement stmt = null; 
@@ -48,7 +48,7 @@ class PostgresqlJDBCTest {
             pstmt.close(); 
             stmt = conn.createStatement( ); 
             rset = stmt.executeQuery(
-                "select * from " + tablename ); 
+                "select distinct name from student natural join takes natural join course where dept_name = 'Comp. Sci.';" + tablename ); 
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\t"); 
                 System.out.print( rset.getString( 2 ) + "\t"); 
