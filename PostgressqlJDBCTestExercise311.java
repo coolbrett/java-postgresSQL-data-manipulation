@@ -37,26 +37,29 @@ class PostgresqlJDBCTestExercise311 {
             } 
             stmt.close(); 
             rset.close(); 
-            PreparedStatement pstmt = 
-                conn.prepareStatement( 
-                "Insert into customers values (?, ?, ?, ?)"); 
-            pstmt.setString(1, "c009"); 
-            pstmt.setString(2, "United"); 
-            pstmt.setString(3, "Sylva"); 
-            pstmt.setDouble(4, 20.00); 
-            pstmt.execute(); 
-            pstmt.close(); 
             stmt = conn.createStatement( ); 
             rset = stmt.executeQuery(
-                "select distinct name from student natural join takes natural join course where dept_name = 'Comp. Sci.';" + tablename ); 
+                "SELECT DISTINCT(name) FROM student NATURAL JOIN" + 
+                    " takes NATURAL JOIN course WHERE dept_name = 'Comp. Sci.'"); 
+            System.out.println("\n3.11a\nName");
+            while( rset.next( ) ) { 
+                System.out.print( rset.getString( 1 ) + "\n"); 
+            } 
+            stmt.close(); 
+            rset.close();
+            stmt = conn.createStatement();
+            rset = stmt.executeQuery(
+                "(SELECT ID, name FROM student NATURAL JOIN takes) EXCEPT" +
+                " (SELECT ID, name FROM student NATURAL JOIN takes WHERE year < 2009)"); 
+            System.out.print("\n3.11b.\n");
+            System.out.print("ID\tName\n");
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\t"); 
-                System.out.print( rset.getString( 2 ) + "\t"); 
-                System.out.print( rset.getString( 3 ) + "\t"); 
-                System.out.println( rset.getDouble( 4 ) ); 
-            } 
-        stmt.close(); 
-        rset.close(); 
+                System.out.print( rset.getString( 2 ) + "\t");
+                System.out.print( "\n");  
+            }
+            stmt.close();
+            rset.close();
         } catch (SQLException e) { 
             System.out.println("Exception: " + e.toString()); 
             System.exit(0); 
