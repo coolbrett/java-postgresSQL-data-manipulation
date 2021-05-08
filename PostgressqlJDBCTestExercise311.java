@@ -1,34 +1,47 @@
+import java.io.Console;
 import java.sql.*;
-class PostgresqlJDBCTestExercise311 { 
+
+/**
+ * Class that contains our solutions for exercises 3.11
+ *
+ * @author Brett Dale
+ * @author Chris Brown
+ * @version 1.0 (5/7/2021
+ */
+class PostgresqlJDBCTestExercise311 {
+
+   /**
+    * Main method that gives solutions for exercises in 3.11
+    * @param args command line args
+    */
     public static void main( String args[] ) { 
-            try { 
+       try {
             Class.forName(
                 "org.postgresql.Driver").newInstance(); 
             } catch (Exception e) { 
             System.out.println("Exception: " + e.toString()); 
             System.exit(0); 
             }
-        // CHANGE THESE ENTRIES TO SUIT YOUR INSTALLATION 
-            String serverIp = "localhost:5435"; 
-            String databasename = "badale2";
-            // you need to change this (mh) 
-            String username = "badale2";
-            // you need to change this (mh) 
-            String password = "chris";
-            // you need to change this (mh) 
-            String tablename = "student"; // Make sure this table exists
-                                            // in your database
+
+            Console userEntry = System.console();
+            System.out.println("Please enter your username: ");
+            String username = userEntry.readLine();
+            System.out.println("Please enter your password: ");
+            String password = new String(userEntry.readPassword());
+            String serverIp = "localhost:5435";
+            System.out.println("Please enter the database name: ");
+            String databasename = userEntry.readLine();
             Connection conn = null; 
             Statement stmt = null; 
             ResultSet rset = null;
-        String cs = "jdbc:postgresql://" + 
+            String cs = "jdbc:postgresql://" +
             serverIp + "/" + databasename + "?user=" + username 
             + "&password=" + password; 
         try { 
             conn = DriverManager.getConnection(cs); 
             stmt = conn.createStatement( ); 
             rset = stmt.executeQuery(
-                "select * from " + tablename ); 
+                "select * from student");
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\t"); 
                 System.out.print( rset.getString( 2 ) + "\t"); 

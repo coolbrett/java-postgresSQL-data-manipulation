@@ -1,6 +1,20 @@
+import java.io.Console;
 import java.sql.*;
-class PostgresqlJDBCTestExercise312 { 
-    public static void main( String args[] ) { 
+
+/**
+ * Class that executes our solutions for 3.12
+ *
+ * @author Brett Dale
+ * @author Chris Brown
+ * @version 1.0 (5/7/2021)
+ */
+class PostgresqlJDBCTestExercise312 {
+
+   /**
+    * Main method that executes solutions for Exercises 3.12
+    * @param args command line arguments
+    */
+   public static void main( String args[] ) {
             try { 
             Class.forName(
                 "org.postgresql.Driver").newInstance(); 
@@ -8,16 +22,16 @@ class PostgresqlJDBCTestExercise312 {
             System.out.println("Exception: " + e.toString()); 
             System.exit(0); 
             }
-        // CHANGE THESE ENTRIES TO SUIT YOUR INSTALLATION 
-            String serverIp = "localhost:5435"; 
-            String databasename = "badale2";
-            // you need to change this (mh) 
-            String username = "badale2";
-            // you need to change this (mh) 
-            String password = "chris";
-            // you need to change this (mh) 
-            String tablename = "studen"; // Make sure this table exists
-                                            // in your database
+
+             Console userEntry = System.console();
+             System.out.println("Please enter your username: ");
+             String username = userEntry.readLine();
+             System.out.println("Please enter your password: ");
+             String password = new String(userEntry.readPassword());
+             String serverIp = "localhost:5435";
+             System.out.println("Please enter the database name: ");
+             String databasename = userEntry.readLine();
+
             Connection conn = null; 
             Statement stmt = null; 
             ResultSet rset = null;
