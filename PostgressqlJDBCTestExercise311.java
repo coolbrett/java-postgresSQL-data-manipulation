@@ -55,6 +55,9 @@ class PostgresqlJDBCTestExercise311 {
                 "SELECT DISTINCT(name) FROM student NATURAL JOIN" + 
                     " takes NATURAL JOIN course WHERE dept_name = 'Comp. Sci.'"); 
             System.out.println("3.11a");
+            System.out.println("Find the names of all students who have taken" +
+                    " at least one Comp. Sci. course; make sure there are no " +
+                    "duplicate names in the result.");
             ResultSetMetaData rsetMeta = rset.getMetaData();
             String tName = rsetMeta.getTableName(1);
             System.out.println("Table name is: " + tName);
@@ -69,6 +72,8 @@ class PostgresqlJDBCTestExercise311 {
                 "(SELECT ID, name FROM student NATURAL JOIN takes) EXCEPT" +
                 " (SELECT ID, name FROM student NATURAL JOIN takes WHERE year < 2009)"); 
             System.out.print("\n3.11b.\n");
+           System.out.println("Find the ID's and names of all stduents who " +
+                   "have not taken any course offering before Spring 2009.");
            rsetMeta = rset.getMetaData();
            tName = rsetMeta.getTableName(1);
            System.out.println("Table name is: " + tName);

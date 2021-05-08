@@ -44,6 +44,8 @@ class PostgresqlJDBCTestExercise312 {
             rset = stmt.executeQuery(
                 "select * from course " ); 
             System.out.println("\n3.12a Before Insert");
+           System.out.println("Create a new course \"CS-001\", titled " +
+                   "\"Weekly Seminar\", with one credit.");
            ResultSetMetaData rsetMeta = rset.getMetaData();
            String tName = rsetMeta.getTableName(1);
            System.out.println("Table name is: " + tName);
@@ -83,6 +85,8 @@ class PostgresqlJDBCTestExercise312 {
             ;
 
             System.out.println("\n3.12b Before Insert");
+            System.out.println("Create a new section of this course in Fall " +
+                   "2009, with sec_id of 1.");
             
             stmt = conn.createStatement( ); 
             rset = stmt.executeQuery(
@@ -132,6 +136,8 @@ class PostgresqlJDBCTestExercise312 {
 
 
             System.out.println("\n3.12c Before Insert");
+           System.out.println("Enroll every student in the Comp. Sci. " +
+                   "department in the above section");
             stmt = conn.createStatement( ); 
             rset = stmt.executeQuery(
                 "select * from takes");
@@ -170,6 +176,8 @@ class PostgresqlJDBCTestExercise312 {
            rset2.close();
         
             System.out.println("\n3.12d Before Insert");
+           System.out.println("Delete enrolments int he above section where " +
+                   "the student's name is Chavez");
             stmt = conn.createStatement( ); 
             rset = stmt.executeQuery(
                 "select * from takes");
