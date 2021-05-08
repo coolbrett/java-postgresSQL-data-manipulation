@@ -25,3 +25,14 @@ FIRST TIME: type `\password` to set up the password you will use
 
 **NOTE: You will need to repeat all these steps for each time you run the 
 java program covering Exercise 3.12
+
+
+## Required methods
+
+- executeUpdate - Line 146 in the Exercise 3.12 file in section 3.12c
+
+- executeQuery - Line 43 in the Exercise 3.11 file in section 3.11a
+
+- prepareStatement - Line 100 in the Exercise 3.12 file in section 3.12b
+
+- getMetaData - Line 58 in the Exercise 3.11 file in section 3.11a
