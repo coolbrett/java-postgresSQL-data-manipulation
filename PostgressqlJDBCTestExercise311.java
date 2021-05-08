@@ -69,6 +69,9 @@ class PostgresqlJDBCTestExercise311 {
                 "(SELECT ID, name FROM student NATURAL JOIN takes) EXCEPT" +
                 " (SELECT ID, name FROM student NATURAL JOIN takes WHERE year < 2009)"); 
             System.out.print("\n3.11b.\n");
+           rsetMeta = rset.getMetaData();
+           tName = rsetMeta.getTableName(1);
+           System.out.println("Table name is: " + tName);
             System.out.print("ID\tName\n");
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\t"); 

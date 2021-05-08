@@ -44,6 +44,9 @@ class PostgresqlJDBCTestExercise312 {
             rset = stmt.executeQuery(
                 "select * from course " ); 
             System.out.println("\n3.12a Before Insert");
+           ResultSetMetaData rsetMeta = rset.getMetaData();
+           String tName = rsetMeta.getTableName(1);
+           System.out.println("Table name is: " + tName);
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\t"); 
                 System.out.print( rset.getString( 2 ) + "\t"); 
@@ -52,8 +55,8 @@ class PostgresqlJDBCTestExercise312 {
                 System.out.print("\n");
             } 
             stmt.close(); 
-            rset.close(); 
-           
+            rset.close();
+
             PreparedStatement pstmt = 
                 conn.prepareStatement(
                     "Insert into course values (?, ?, ?, ?)");
@@ -83,7 +86,10 @@ class PostgresqlJDBCTestExercise312 {
             
             stmt = conn.createStatement( ); 
             rset = stmt.executeQuery(
-                "select * from section"); 
+                "select * from section");
+           rsetMeta = rset.getMetaData();
+           tName = rsetMeta.getTableName(1);
+           System.out.println("Table name is: " + tName);
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\t"); 
                 System.out.print( rset.getString( 2 ) + "\t"); 
@@ -108,7 +114,8 @@ class PostgresqlJDBCTestExercise312 {
             System.out.println("\n3.12b After Insert");
             stmt = conn.createStatement( ); 
             rset = stmt.executeQuery(
-                "select * from section"); 
+                "select * from section");
+
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\t"); 
                 System.out.print( rset.getString( 2 ) + "\t"); 
@@ -127,7 +134,10 @@ class PostgresqlJDBCTestExercise312 {
             System.out.println("\n3.12c Before Insert");
             stmt = conn.createStatement( ); 
             rset = stmt.executeQuery(
-                "select * from takes"); 
+                "select * from takes");
+           rsetMeta = rset.getMetaData();
+           tName = rsetMeta.getTableName(1);
+           System.out.println("Table name is: " + tName);
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\t"); 
                 System.out.print( rset.getString( 2 ) + "\t"); 
@@ -162,7 +172,10 @@ class PostgresqlJDBCTestExercise312 {
             System.out.println("\n3.12d Before Insert");
             stmt = conn.createStatement( ); 
             rset = stmt.executeQuery(
-                "select * from takes"); 
+                "select * from takes");
+            rsetMeta = rset.getMetaData();
+            tName = rsetMeta.getTableName(1);
+            System.out.println("Table name is: " + tName);
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\t"); 
                 System.out.print( rset.getString( 2 ) + "\t"); 
