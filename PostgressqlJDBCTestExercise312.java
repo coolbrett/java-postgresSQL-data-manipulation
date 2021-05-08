@@ -176,7 +176,8 @@ class PostgresqlJDBCTestExercise312 {
            rset2.close();
         
             System.out.println("\n3.12d Before Insert");
-           System.out.println("Delete enrolments int he above section where " +
+           System.out.println("Delete enrollments in the above section where" +
+                   " " +
                    "the student's name is Chavez");
             stmt = conn.createStatement( ); 
             rset = stmt.executeQuery(
