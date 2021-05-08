@@ -49,6 +49,7 @@ class PostgresqlJDBCTestExercise312 {
            ResultSetMetaData rsetMeta = rset.getMetaData();
            String tName = rsetMeta.getTableName(1);
            System.out.println("Table name is: " + tName);
+           System.out.println("course_id\ttitle\tdept_name\tcredits");
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\t"); 
                 System.out.print( rset.getString( 2 ) + "\t"); 
@@ -68,8 +69,8 @@ class PostgresqlJDBCTestExercise312 {
            pstmt.setInt(4, 1);
            pstmt.execute();
            pstmt.close();
-
-            System.out.println("\n3.12a After Insert"); 
+           System.out.println("course_id\ttitle\tdept_name\tcredits");
+           System.out.println("\n3.12a After Insert");
             stmt = conn.createStatement( ); 
             rset = stmt.executeQuery(
                 "select * from course"); 
@@ -94,6 +95,8 @@ class PostgresqlJDBCTestExercise312 {
            rsetMeta = rset.getMetaData();
            tName = rsetMeta.getTableName(1);
            System.out.println("Table name is: " + tName);
+           System.out.println("course_id-section-id\tsemester\tyear\tbuilding" +
+                   "\troom_number\ttime_slot_id");
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\t"); 
                 System.out.print( rset.getString( 2 ) + "\t"); 
@@ -119,7 +122,9 @@ class PostgresqlJDBCTestExercise312 {
             stmt = conn.createStatement( ); 
             rset = stmt.executeQuery(
                 "select * from section");
-
+            System.out.println("course_id-section-id\tsemester\tyear" +
+                    "\tbuilding" +
+                   "\troom_number\ttime_slot_id");
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\t"); 
                 System.out.print( rset.getString( 2 ) + "\t"); 
@@ -144,6 +149,7 @@ class PostgresqlJDBCTestExercise312 {
            rsetMeta = rset.getMetaData();
            tName = rsetMeta.getTableName(1);
            System.out.println("Table name is: " + tName);
+           System.out.println("ID\tcourse_id\tsec_id\tsemester\tyear\tgrade\t");
             while( rset.next( ) ) { 
                 System.out.print( rset.getString( 1 ) + "\t"); 
                 System.out.print( rset.getString( 2 ) + "\t"); 
@@ -162,7 +168,8 @@ class PostgresqlJDBCTestExercise312 {
                      int rowsAdd = stmt2.executeUpdate("INSERT INTO takes(ID,course_id, sec_id, semester, year)" +
            " SELECT ID, 'CS-001', '1', 'Fall', 2009 FROM student WHERE dept_name = 'Comp. Sci.'");  
             ResultSet rset2 = stmt2.executeQuery(
-                "select * from takes"); 
+                "select * from takes");
+           System.out.println("ID\tcourse_id\tsec_id\tsemester\tyear\tgrade\t");
            while( rset2.next( ) ) { 
                System.out.print( rset2.getString( 1 ) + "\t"); 
                System.out.print( rset2.getString( 2 ) + "\t"); 
@@ -185,7 +192,8 @@ class PostgresqlJDBCTestExercise312 {
             rsetMeta = rset.getMetaData();
             tName = rsetMeta.getTableName(1);
             System.out.println("Table name is: " + tName);
-            while( rset.next( ) ) { 
+           System.out.println("ID\tcourse_id\tsec_id\tsemester\tyear\tgrade\t");
+           while( rset.next( ) ) {
                 System.out.print( rset.getString( 1 ) + "\t"); 
                 System.out.print( rset.getString( 2 ) + "\t"); 
                 System.out.print( rset.getString( 3 ) + "\t"); 
@@ -205,7 +213,8 @@ class PostgresqlJDBCTestExercise312 {
                         " (semester = 'Fall') AND (year = 2009) AND" +
                         " (ID IN ( SELECT ID FROM student WHERE name = 'Chavez'))" );  
             rset2 = stmt2.executeQuery(
-                "select * from takes"); 
+                "select * from takes");
+           System.out.println("ID\tcourse_id\tsec_id\tsemester\tyear\tgrade\t");
            while( rset2.next( ) ) { 
                System.out.print( rset2.getString( 1 ) + "\t"); 
                System.out.print( rset2.getString( 2 ) + "\t"); 
